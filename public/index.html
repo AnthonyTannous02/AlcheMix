@@ -16,29 +16,29 @@
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
 
     <!-- Using right thumbstick to move around -->
-    <script src="/js/movement.js" type="text/html"></script>
+    <script src="./js/movement.js" type="text/html"></script>
 
     <!-- Superhands & Physics -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.1.0/dist/aframe-physics-system.js"></script>
     <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
-    
-      <!-- Superhands Collision -->
-    <script src="/js/superhands.js" type="text/html"></script>
+
+    <!-- Superhands Collision -->
+    <script src="./js/superhands.js" type="text/html"></script>
 
     <!-- Whiteboard Scripts -->
-    <script src="/js/intersection-visual.js" type="text/html"></script>
-    <script src="/js/color-picker.js" type="text/html"></script>
-    <script src="/js/erase-all.js" type="text/html"></script>
-    <script src="/js/texture-painter.js" type="text/html"></script>
+    <script src="./js/intersection-visual.js" type="text/html"></script>
+    <script src="./js/color-picker.js" type="text/html"></script>
+    <script src="./js/erase-all.js" type="text/html"></script>
+    <script src="./js/texture-painter.js" type="text/html"></script>
 
     <!-- Menu Scripts -->
-    <script src="/js/menu_func.js" type="text/html"></script>
+    <script src="./js/menu_func.js" type="text/html"></script>
 
     <!-- Phone Joystick -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.8.2/nipplejs.min.js"></script>
-    <script src="/js/joystick.js" type="text/html"></script>
+    <script src="./js/joystick.js" type="text/html"></script>
 
     <!-- Networked Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
@@ -64,8 +64,8 @@
         return components;
       };
     </script>
-    <script src="/js/nametag.js" type="text/html"></script>
-    <script src="/js/spawn-in-circle.js" type="text/html"></script>
+    <script src="./js/nametag.js" type="text/html"></script>
+    <script src="./js/spawn-in-circle.js" type="text/html"></script>
   </head>
 
   <body style="margin: 0px; overflow: hidden">
@@ -105,10 +105,7 @@
           src="https://rawgit.com/kfarr/aframe-select-bar-component/master/examples/assets/env_arrow.obj"
         ></a-asset-item>
 
-        <a-asset-item
-          id="room"
-          src="/sci_fi_room.glb"
-        ></a-asset-item>
+        <a-asset-item id="room" src="/sci_fi_room.glb"></a-asset-item>
 
         <a-asset-item
           id="car1"
@@ -191,8 +188,6 @@
             ></a-text>
           </a-entity>
         </template>
-
-     
       </a-assets>
 
       <a-sky color="lightblue"></a-sky>
@@ -289,12 +284,9 @@
               ></a-plane>
             </a-entity>
 
-            <a-entity id="assets_menu"> 
-            
-             <!-- You can add assets here, and they will show up in your hand menu -->
-              
+            <a-entity id="assets_menu">
+              <!-- You can add assets here, and they will show up in your hand menu -->
             </a-entity>
-          
           </a-plane>
         </a-entity>
       </a-entity>
@@ -320,7 +312,7 @@
             static-body>
           </a-plane>
         </a-entity> -->
-        
+
         <a-entity visible="false">
           <a-box
             static-body
@@ -328,7 +320,7 @@
             scale="65 65 1"
             rotation="90 0 0"
           ></a-box>
-          
+
           <a-box
             static-body
             position="14.25 0 -21.8"
@@ -388,14 +380,39 @@
       ></a-entity> -->
 
       <!-- Sphere -->
-      <a-sphere
+      <!-- <a-sphere
         id="s1"
         position="0 1 -5"
         networked="template:#box;attachTemplateToLocal:false;"
         material="color: red"
         mixin="all-interactions"
-      ></a-sphere>
-
+      ></a-sphere> -->
+      <a-entity
+        mixin="all-interactions"
+        networked="template:#box;attachTemplateToLocal:false;"
+        id="rotatableEntity"
+        position="0 1.5 -3"
+      >
+        <!-- Atoms -->
+        <a-sphere position="-4 1.5 -3" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-sphere position="0 1.5 -3" radius="1.25" color="#4CC3D9"></a-sphere>
+        <a-sphere position="3 1.5 -5" radius="1.25" color="#FFC65D"></a-sphere>
+        <!-- Bonds -->
+        <a-cylinder
+          position="-2 1.5 -3"
+          radius="0.1"
+          height="2.24"
+          color="#DDD"
+          rotation="0 0 85"
+        ></a-cylinder>
+        <a-cylinder
+          position="1.5 1.25 -4"
+          radius="0.1"
+          height="3.16"
+          color="#DDD"
+          rotation="0 40 90"
+        ></a-cylinder>
+      </a-entity>
       <!-- <a-box
         color="yellow"
         position="0 1.2 -15"
@@ -502,5 +519,6 @@
       </a-entity>
       <!-- End Whiteboard -->
     </a-scene>
+    <script src="./js/toggle-rotation.js"></script>
   </body>
 </html>
